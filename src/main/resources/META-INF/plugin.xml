@@ -1,0 +1,19 @@
+<idea-plugin>
+    <id>io.github.luke-biel.IonType</id>
+    <name>IonType</name>
+    <vendor email="lukasz.p.biel@gmail.com" url="https://luke-biel.github.io">luke-biel</vendor>
+
+    <description><![CDATA[
+    Support for .ion format developed by Anixe.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType name="Ion file" implementationClass="io.github.luke_biel.IonFileType" fieldName="INSTANCE"
+                  language="ION" extensions="ion"/>
+        <lang.parserDefinition language="ION" implementationClass="io.github.luke_biel.IonParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="ION"
+                                       implementationClass="io.github.luke_biel.IonSyntaxHighlighterFactory"/>
+    </extensions>
+</idea-plugin>

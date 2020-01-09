@@ -1,0 +1,40 @@
+{
+  parserClass="io.github.luke_biel.parser.IonParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Ion"
+  psiImplClassSuffix="Impl"
+  psiPackage="io.github.luke_biel.psi"
+  psiImplPackage="io.github.luke_biel.psi.impl"
+
+  elementTypeHolderClass="io.github.luke_biel.psi.IonTypes"
+  elementTypeClass="io.github.luke_biel.psi.IonElementType"
+  tokenTypeClass="io.github.luke_biel.psi.IonTokenType"
+}
+
+ionFile ::= item_*
+
+private item_ ::= (HEADER|csv|property|COMMENT)
+
+csv ::=  (CSV_SEP (csv_values? CSV_SEP)+)
+
+property ::= (KEY ASSIGN kvc_value)
+
+kvc_value ::= (simple_value | array | dictionary)
+
+csv_values ::= (csv_value+ | CSV_FILLER)
+
+csv_value ::= (simple_value | csv_dictionary_item | CSV_OTHER)
+
+simple_value ::= (STRING|INTEGER|BOOLEAN|REAL|RANGE)
+
+array ::= (SQUARE_OPN simple_value (COLLECTION_SEP simple_value)* SQUARE_CLS) | (SQUARE_OPN SQUARE_CLS)
+
+dictionary ::= (CURLY_OPN dictionary_item (COLLECTION_SEP dictionary_item)* CURLY_CLS) | (CURLY_OPN CURLY_CLS)
+
+dictionary_item ::= (KEY ASSIGN simple_value)
+
+csv_dictionary_item ::= (CSV_KEY CSV_ASSIGN csv_simple_value)
+
+csv_simple_value ::= (STRING|INTEGER|BOOLEAN|REAL|RANGE|array)
