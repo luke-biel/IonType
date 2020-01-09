@@ -39,6 +39,10 @@ public class IonVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitHeaderItem(@NotNull IonHeaderItem o) {
+    visitPsiElement(o);
+  }
+
   public void visitKvcValue(@NotNull IonKvcValue o) {
     visitPsiElement(o);
   }

@@ -16,6 +16,7 @@ public interface IonTypes {
   IElementType CSV_VALUES = new IonElementType("CSV_VALUES");
   IElementType DICTIONARY = new IonElementType("DICTIONARY");
   IElementType DICTIONARY_ITEM = new IonElementType("DICTIONARY_ITEM");
+  IElementType HEADER_ITEM = new IonElementType("HEADER_ITEM");
   IElementType KVC_VALUE = new IonElementType("KVC_VALUE");
   IElementType PROPERTY = new IonElementType("PROPERTY");
   IElementType SIMPLE_VALUE = new IonElementType("SIMPLE_VALUE");
@@ -66,6 +67,9 @@ public interface IonTypes {
       }
       else if (type == DICTIONARY_ITEM) {
         return new IonDictionaryItemImpl(node);
+      }
+      else if (type == HEADER_ITEM) {
+        return new IonHeaderItemImpl(node);
       }
       else if (type == KVC_VALUE) {
         return new IonKvcValueImpl(node);

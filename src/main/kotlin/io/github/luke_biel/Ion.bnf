@@ -13,9 +13,11 @@
   tokenTypeClass="io.github.luke_biel.psi.IonTokenType"
 }
 
-ionFile ::= item_*
+ionFile ::= item*
 
-private item_ ::= (HEADER|csv|property|COMMENT)
+private item ::= (header_item|csv|property|COMMENT)
+
+header_item ::= HEADER
 
 csv ::=  (CSV_SEP (csv_values? CSV_SEP)+)
 

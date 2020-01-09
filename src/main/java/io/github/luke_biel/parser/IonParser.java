@@ -280,23 +280,35 @@ public class IonParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // item_*
+  // HEADER
+  public static boolean header_item(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "header_item")) return false;
+    if (!nextTokenIs(b, HEADER)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, HEADER);
+    exit_section_(b, m, HEADER_ITEM, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // item*
   static boolean ionFile(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ionFile")) return false;
     while (true) {
       int c = current_position_(b);
-      if (!item_(b, l + 1)) break;
+      if (!item(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "ionFile", c)) break;
     }
     return true;
   }
 
   /* ********************************************************** */
-  // HEADER|csv|property|COMMENT
-  static boolean item_(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "item_")) return false;
+  // header_item|csv|property|COMMENT
+  static boolean item(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "item")) return false;
     boolean r;
-    r = consumeToken(b, HEADER);
+    r = header_item(b, l + 1);
     if (!r) r = csv(b, l + 1);
     if (!r) r = property(b, l + 1);
     if (!r) r = consumeToken(b, COMMENT);
