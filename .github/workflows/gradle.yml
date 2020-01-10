@@ -1,12 +1,13 @@
-name: Java CI
+name: Release
 
-on: [push, pull_request]
+on:
+  push:
+    tags:
+    - 'v*'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: Set up JDK 1.8
@@ -37,6 +38,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./build/lib/IonType-$(./gradlew properties | grep version | awk -F':' '{print $2}' | tr -d ' ').jar
-        asset_name: IonType-$(./gradlew properties | grep version | awk -F':' '{print $2}' | tr -d ' ')
+        asset_path: ./build/lib/IonType-*.jar
+        asset_name: IonType.jar
         asset_content_type: application/jar
