@@ -11,11 +11,17 @@
   elementTypeHolderClass="io.github.luke_biel.psi.IonTypes"
   elementTypeClass="io.github.luke_biel.psi.IonElementType"
   tokenTypeClass="io.github.luke_biel.psi.IonTokenType"
+
+  psiImplUtilClass = "io.github.luke_biel.psi.impl.IonPsiImplUtil"
 }
 
 ionFile ::= item*
 
-private item ::= (header_item|csv|property|COMMENT)
+item ::= (header_item|csv|property|COMMENT) {
+    methods=[getName setName getPresentation getNameIdentifier]
+    mixin="io.github.luke_biel.psi.impl.IonElementImpl"
+    implements="io.github.luke_biel.psi.IonElement"
+}
 
 header_item ::= HEADER
 

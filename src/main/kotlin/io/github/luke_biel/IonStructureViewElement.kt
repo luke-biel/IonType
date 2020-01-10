@@ -5,52 +5,54 @@ import com.intellij.ide.structureView.StructureViewTreeElement
 import com.intellij.ide.util.treeView.smartTree.SortableTreeElement
 import com.intellij.ide.util.treeView.smartTree.TreeElement
 import com.intellij.navigation.ItemPresentation
+import com.intellij.psi.NavigatablePsiElement
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
+import io.github.luke_biel.psi.IonElement
 import io.github.luke_biel.psi.IonFile
 import io.github.luke_biel.psi.IonHeaderItem
+import io.github.luke_biel.psi.impl.IonElementImpl
+import io.github.luke_biel.psi.impl.IonHeaderItemImpl
 import java.util.*
 
-// TODO: I need to receive NavigatablePsiElement here or some IonItem or something
-// Look into JsonElement which is interface implemented by JsonFile AND ""JsonTreeElements""
-class IonStructureViewElement(private val element: PsiElement) : StructureViewTreeElement,
+class IonStructureViewElement(private val element: NavigatablePsiElement) : StructureViewTreeElement,
     SortableTreeElement {
     override fun getValue(): Any {
         return element
     }
 
     override fun navigate(requestFocus: Boolean) {
-//        element.navigate(requestFocus)
+        element.navigate(requestFocus)
     }
 
     override fun canNavigate(): Boolean {
-//        return element.canNavigate()
-        return false
+        return element.canNavigate()
     }
 
     override fun canNavigateToSource(): Boolean {
-//        return element.canNavigateToSource()
-        return false
+        return element.canNavigateToSource()
     }
 
     override fun getAlphaSortKey(): String {
-//        val name = element.name
-        return element.text
+        val name = element.name
+        return name ?: ""
     }
 
     override fun getPresentation(): ItemPresentation {
-//        val presentation = element.presentation
-        return PresentationData(element.text, "", element.getIcon(0), null)
+        val presentation = element.presentation
+        return presentation ?: PresentationData()
     }
 
     override fun getChildren(): Array<TreeElement> {
         return if (element is IonFile) {
-            val items: Array<IonHeaderItem> =
-                PsiTreeUtil.getChildrenOfType(element, IonHeaderItem::class.java)!!
+            val items: Array<IonElementImpl> =
+                PsiTreeUtil.getChildrenOfType(element, IonElementImpl::class.java)!!
             val treeElements: MutableList<TreeElement> =
                 ArrayList(items.size)
             for (item in items) {
-                treeElements.add(IonStructureViewElement(item))
+                if (item.firstChild is IonHeaderItemImpl) {
+                    treeElements.add(IonStructureViewElement(item))
+                }
             }
             treeElements.toTypedArray()
         } else {

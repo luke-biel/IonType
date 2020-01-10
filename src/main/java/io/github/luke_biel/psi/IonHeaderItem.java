@@ -2,11 +2,9 @@
 package io.github.luke_biel.psi;
 
 import java.util.List;
-
-import com.intellij.psi.NavigatablePsiElement;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface IonHeaderItem extends PsiElement, NavigatablePsiElement {
+public interface IonHeaderItem extends PsiElement {
 
 }

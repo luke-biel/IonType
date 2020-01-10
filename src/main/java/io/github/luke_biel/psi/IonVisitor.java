@@ -43,6 +43,10 @@ public class IonVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitItem(@NotNull IonItem o) {
+    visitElement(o);
+  }
+
   public void visitKvcValue(@NotNull IonKvcValue o) {
     visitPsiElement(o);
   }
@@ -52,6 +56,10 @@ public class IonVisitor extends PsiElementVisitor {
   }
 
   public void visitSimpleValue(@NotNull IonSimpleValue o) {
+    visitPsiElement(o);
+  }
+
+  public void visitElement(@NotNull IonElement o) {
     visitPsiElement(o);
   }
 

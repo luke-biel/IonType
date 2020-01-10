@@ -305,13 +305,15 @@ public class IonParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // header_item|csv|property|COMMENT
-  static boolean item(PsiBuilder b, int l) {
+  public static boolean item(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "item")) return false;
     boolean r;
+    Marker m = enter_section_(b, l, _NONE_, ITEM, "<item>");
     r = header_item(b, l + 1);
     if (!r) r = csv(b, l + 1);
     if (!r) r = property(b, l + 1);
     if (!r) r = consumeToken(b, COMMENT);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 

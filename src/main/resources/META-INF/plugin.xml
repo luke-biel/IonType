@@ -16,7 +16,7 @@
         <lang.syntaxHighlighterFactory language="ION"
                                        implementationClass="io.github.luke_biel.IonSyntaxHighlighterFactory"/>
         <lang.commenter language="ION" implementationClass="io.github.luke_biel.IonCommenter"/>
-<!--        <lang.psiStructureViewFactory language="ION" implementationClass="io.github.luke_biel.IonStructureViewFactory" />-->
+        <lang.psiStructureViewFactory language="ION" implementationClass="io.github.luke_biel.IonStructureViewFactory" />
         <completion.contributor language="ION" implementationClass="io.github.luke_biel.IonCompletionContributor" />
     </extensions>
 </idea-plugin>
