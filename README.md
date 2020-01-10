@@ -29,9 +29,10 @@ matrix_array = ["MATRIX.A", "MATRIX.B"]
 **Preferences** -> **Plugins** -> **Marketplace** -> **search _IonType_** -> **Install**
 
 ## Download jar from JetBrains website
-1) visit [plugin website](https://plugins.jetbrains.com/plugin/13632-iontype)
-2) goto Versions
-3) download latest `.jar`
+1) visit [plugin website](https://plugins.jetbrains.com/plugin/13632-iontype) & goto Versions  
+**or**    
+2) [download from releases](https://github.com/luke-biel/IonType/releases/download)
+3) get latest `.jar`
 4) **Preferences** -> **Plugins** -> **Gear icon** -> **Install Plugin from Disk**
 
 ## Compile sources
