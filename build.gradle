@@ -33,11 +33,10 @@ compileTestKotlin {
 }
 patchPluginXml {
     changeNotes """
- Initial release, enhancing workflow with .ion files in ARIZ format developed by Anixe Poland.
+ Second release of IonType plugin working on base features
  <ul>
- <li>Syntax coloring for .ion format</li>
- <li>ION section snippets for ACLR8</li>
- <li>Line comment insertion</li>
- </ul>       
+ <li>Fixed minor issue with formatting</li>
+ <li>Added structure view support</li>
+ </ul>     
 """
 }

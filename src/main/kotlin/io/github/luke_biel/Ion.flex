@@ -54,7 +54,7 @@ CSV_SEP=\|
 %%
 
 #[^\n]*$                                                                                    { return IonTypes.COMMENT; }
-<YYINITIAL> ^{CSV_SEP}{FILL}*({CSV_SEP}{FILL}*)*{CSV_SEP}$                                  { yybegin(YYINITIAL); return IonTypes.CSV_FILLER; }
+<ION_CSV> {FILL}{FILL}*/[\|]                                                                { return IonTypes.CSV_FILLER; }
 <YYINITIAL,ION_CSV> {INTEGER_CHARACTER}+{CSV_ASSIGN}{INTEGER_CHARACTER}+                    { return IonTypes.RANGE; }
 <ION_CSV> {FIRST_KEY_CHARACTER}{KEY_CHARACTER}*/{CSV_ASSIGN}                                { yybegin(W_CSV_ASSIGN); return IonTypes.CSV_KEY; }
 <W_CSV_ASSIGN> {CSV_ASSIGN}                                                                 { yybegin(CSV_VAL); return IonTypes.CSV_ASSIGN; }
