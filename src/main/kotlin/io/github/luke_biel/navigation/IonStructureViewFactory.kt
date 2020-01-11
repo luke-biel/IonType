@@ -1,4 +1,4 @@
-package io.github.luke_biel
+package io.github.luke_biel.navigation
 
 import com.intellij.ide.structureView.StructureViewBuilder
 import com.intellij.ide.structureView.StructureViewModel

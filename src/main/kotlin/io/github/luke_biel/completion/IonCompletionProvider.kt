@@ -1,4 +1,4 @@
-package io.github.luke_biel
+package io.github.luke_biel.completion
 
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElement
@@ -208,30 +208,78 @@ class IonCompletionProvider : CompletionProvider<CompletionParameters>() {
         context: ProcessingContext,
         result: CompletionResultSet
     ) {
-        result.addElement(createSectionLookupElement("config", CONFIG_SECTION))
-        result.addElement(createSectionLookupElement("contract", CONTRACT_SECTION))
-        result.addElement(createSectionLookupElement("contract_full", FULL_CONTRACT_SECTION))
-        result.addElement(createSectionLookupElement("def_hotel", DEF_HOTEL_SECTION))
-        result.addElement(createSectionLookupElement("def_meal", DEF_MEAL_SECTION))
-        result.addElement(createSectionLookupElement("def_room", DEF_ROOM_SECTION))
-        result.addElement(createSectionLookupElement("rate_plan", RATE_PLAN_SECTION))
-        result.addElement(createSectionLookupElement("rate_base", RATE_BASE_SECTION))
-        result.addElement(createSectionLookupElement("rate_rule", RATE_RULE_SECTION))
-        result.addElement(createSectionLookupElement("rate_supplement", RATE_SUPPLEMENT_SECTION))
-        result.addElement(createSectionLookupElement("rate_discount", RATE_DISCOUNT_SECTION))
-        result.addElement(createSectionLookupElement("rate_discount_group", RATE_DISCOUNT_GROUP_SECTION))
-        result.addElement(createSectionLookupElement("rate_discount_strategy", RATE_DISCOUNT_STRATEGY_SECTION))
-        result.addElement(createSectionLookupElement("rate_cnx", RATE_CNX_SECTION))
-        result.addElement(createSectionLookupElement("tax", TAX_SECTION))
-        result.addElement(createSectionLookupElement("tax_group", TAX_GROUP_SECTION))
-        result.addElement(createSectionLookupElement("sales_profile", SALES_PROFILE_SECTION))
-        result.addElement(createSectionLookupElement("sales_markup", SALES_MARKUP_SECTION))
-        result.addElement(createSectionLookupElement("restriction", RESTRICTION_SECTION))
-        result.addElement(createSectionLookupElement("query_transform", QUERY_TRANSFORM_SECTION))
-        result.addElement(createSectionLookupElement("avl_state", AVL_STATE_SECTION))
-        result.addElement(createSectionLookupElement("avl_inv", AVL_INV_SECTION))
-        result.addElement(createSectionLookupElement("rate_supplement_cat", RATE_SUPPLEMENT_CAT_SECTION))
-        result.addElement(createSectionLookupElement("rate_discount_cat", RATE_DISCOUNT_CAT_SECTION))
+        result.addElement(createSectionLookupElement("config",
+            CONFIG_SECTION
+        ))
+        result.addElement(createSectionLookupElement("contract",
+            CONTRACT_SECTION
+        ))
+        result.addElement(createSectionLookupElement("contract_full",
+            FULL_CONTRACT_SECTION
+        ))
+        result.addElement(createSectionLookupElement("def_hotel",
+            DEF_HOTEL_SECTION
+        ))
+        result.addElement(createSectionLookupElement("def_meal",
+            DEF_MEAL_SECTION
+        ))
+        result.addElement(createSectionLookupElement("def_room",
+            DEF_ROOM_SECTION
+        ))
+        result.addElement(createSectionLookupElement("rate_plan",
+            RATE_PLAN_SECTION
+        ))
+        result.addElement(createSectionLookupElement("rate_base",
+            RATE_BASE_SECTION
+        ))
+        result.addElement(createSectionLookupElement("rate_rule",
+            RATE_RULE_SECTION
+        ))
+        result.addElement(createSectionLookupElement("rate_supplement",
+            RATE_SUPPLEMENT_SECTION
+        ))
+        result.addElement(createSectionLookupElement("rate_discount",
+            RATE_DISCOUNT_SECTION
+        ))
+        result.addElement(createSectionLookupElement("rate_discount_group",
+            RATE_DISCOUNT_GROUP_SECTION
+        ))
+        result.addElement(createSectionLookupElement("rate_discount_strategy",
+            RATE_DISCOUNT_STRATEGY_SECTION
+        ))
+        result.addElement(createSectionLookupElement("rate_cnx",
+            RATE_CNX_SECTION
+        ))
+        result.addElement(createSectionLookupElement("tax",
+            TAX_SECTION
+        ))
+        result.addElement(createSectionLookupElement("tax_group",
+            TAX_GROUP_SECTION
+        ))
+        result.addElement(createSectionLookupElement("sales_profile",
+            SALES_PROFILE_SECTION
+        ))
+        result.addElement(createSectionLookupElement("sales_markup",
+            SALES_MARKUP_SECTION
+        ))
+        result.addElement(createSectionLookupElement("restriction",
+            RESTRICTION_SECTION
+        ))
+        result.addElement(createSectionLookupElement("query_transform",
+            QUERY_TRANSFORM_SECTION
+        ))
+        result.addElement(createSectionLookupElement("avl_state",
+            AVL_STATE_SECTION
+        ))
+        result.addElement(createSectionLookupElement("avl_inv",
+            AVL_INV_SECTION
+        ))
+        result.addElement(createSectionLookupElement("rate_supplement_cat",
+            RATE_SUPPLEMENT_CAT_SECTION
+        ))
+        result.addElement(createSectionLookupElement("rate_discount_cat",
+            RATE_DISCOUNT_CAT_SECTION
+        ))
     }
 
     private fun createSectionLookupElement(name: String, template: String): LookupElement {

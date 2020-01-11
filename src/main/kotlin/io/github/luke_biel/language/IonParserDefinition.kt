@@ -1,4 +1,4 @@
-package io.github.luke_biel
+package io.github.luke_biel.language
 
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
@@ -12,6 +12,7 @@ import com.intellij.psi.PsiFile
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
+import io.github.luke_biel.IonLexerAdapter
 import io.github.luke_biel.parser.IonParser
 import io.github.luke_biel.psi.IonFile
 import io.github.luke_biel.psi.IonTypes

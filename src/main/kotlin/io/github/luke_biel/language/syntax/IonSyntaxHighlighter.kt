@@ -1,4 +1,4 @@
-package io.github.luke_biel
+package io.github.luke_biel.language.syntax
 
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
@@ -7,6 +7,7 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IElementType
+import io.github.luke_biel.IonLexerAdapter
 import io.github.luke_biel.psi.IonTypes
 
 

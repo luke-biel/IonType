@@ -10,13 +10,13 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileType name="Ion file" implementationClass="io.github.luke_biel.IonFileType" fieldName="INSTANCE"
+        <fileType name="Ion file" implementationClass="io.github.luke_biel.language.IonFileType" fieldName="INSTANCE"
                   language="ION" extensions="ion"/>
-        <lang.parserDefinition language="ION" implementationClass="io.github.luke_biel.IonParserDefinition"/>
+        <lang.parserDefinition language="ION" implementationClass="io.github.luke_biel.language.IonParserDefinition"/>
         <lang.syntaxHighlighterFactory language="ION"
-                                       implementationClass="io.github.luke_biel.IonSyntaxHighlighterFactory"/>
-        <lang.commenter language="ION" implementationClass="io.github.luke_biel.IonCommenter"/>
-        <lang.psiStructureViewFactory language="ION" implementationClass="io.github.luke_biel.IonStructureViewFactory" />
-        <completion.contributor language="ION" implementationClass="io.github.luke_biel.IonCompletionContributor" />
+                                       implementationClass="io.github.luke_biel.language.syntax.IonSyntaxHighlighterFactory"/>
+        <lang.commenter language="ION" implementationClass="io.github.luke_biel.format.IonCommenter"/>
+        <lang.psiStructureViewFactory language="ION" implementationClass="io.github.luke_biel.navigation.IonStructureViewFactory" />
+        <completion.contributor language="ION" implementationClass="io.github.luke_biel.completion.IonCompletionContributor" />
     </extensions>
 </idea-plugin>

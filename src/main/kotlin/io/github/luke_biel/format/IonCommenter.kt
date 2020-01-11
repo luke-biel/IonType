@@ -1,4 +1,4 @@
-package io.github.luke_biel
+package io.github.luke_biel.format
 
 import com.intellij.lang.Commenter
 

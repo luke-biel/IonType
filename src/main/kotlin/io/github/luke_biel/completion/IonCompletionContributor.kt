@@ -1,8 +1,9 @@
-package io.github.luke_biel
+package io.github.luke_biel.completion
 
 import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType
 import com.intellij.patterns.PlatformPatterns
+import io.github.luke_biel.language.IonLanguage
 
 class IonCompletionContributor : CompletionContributor() {
     init {

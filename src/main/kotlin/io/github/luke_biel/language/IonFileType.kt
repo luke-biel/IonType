@@ -1,4 +1,4 @@
-package io.github.luke_biel
+package io.github.luke_biel.language
 
 import com.intellij.lang.Language
 import com.intellij.openapi.fileTypes.LanguageFileType

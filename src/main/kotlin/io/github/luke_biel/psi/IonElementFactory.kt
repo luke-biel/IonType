@@ -2,7 +2,7 @@ package io.github.luke_biel.psi
 
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiFileFactory
-import io.github.luke_biel.IonFileType
+import io.github.luke_biel.language.IonFileType
 
 
 object IonElementFactory {
