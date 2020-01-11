@@ -7,7 +7,7 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IElementType
-import io.github.luke_biel.IonLexerAdapter
+import io.github.luke_biel.language.IonLexerAdapter
 import io.github.luke_biel.psi.IonTypes
 
 

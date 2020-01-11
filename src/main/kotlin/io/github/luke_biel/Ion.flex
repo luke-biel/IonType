@@ -1,4 +1,4 @@
-package io.github.luke_biel;
+package io.github.luke_biel.language;
 
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
@@ -48,26 +48,19 @@ PERCENT=%?
 CSV_SEP=\|
 
 %s ION_CSV
-%s CSV_VAL
-%s W_CSV_ASSIGN
 
 %%
 
-#[^\n]*$                                                                                    { return IonTypes.COMMENT; }
-<ION_CSV> {FILL}{FILL}*/[\|]                                                                { return IonTypes.CSV_FILLER; }
+#[^\n]*                                                                                     { return IonTypes.COMMENT; }
+
+<YYINITIAL,ION_CSV> {CSV_SEP}                                                               { yybegin(ION_CSV); return IonTypes.CSV_SEP; }
+<ION_CSV> {FILL}{FILL}*/\|                                                                  { return IonTypes.CSV_FILLER; }
 <YYINITIAL,ION_CSV> {INTEGER_CHARACTER}+{CSV_ASSIGN}{INTEGER_CHARACTER}+                    { return IonTypes.RANGE; }
-<ION_CSV> {FIRST_KEY_CHARACTER}{KEY_CHARACTER}*/{CSV_ASSIGN}                                { yybegin(W_CSV_ASSIGN); return IonTypes.CSV_KEY; }
-<W_CSV_ASSIGN> {CSV_ASSIGN}                                                                 { yybegin(CSV_VAL); return IonTypes.CSV_ASSIGN; }
-<CSV_VAL> {INTEGER_CHARACTER}+{CSV_ASSIGN}{INTEGER_CHARACTER}+                              { yybegin(ION_CSV); return IonTypes.RANGE; }
-<CSV_VAL> {BOOLEAN}                                                                         { yybegin(ION_CSV); return IonTypes.BOOLEAN; }
-<CSV_VAL> {PERCENT}{NEG}{INTEGER_CHARACTER}*{FLOAT_DELIMITER}{INTEGER_CHARACTER}+           { yybegin(ION_CSV); return IonTypes.REAL; }
-<CSV_VAL> {PERCENT}{NEG}{INTEGER_CHARACTER}+                                                { yybegin(ION_CSV); return IonTypes.INTEGER; }
 <YYINITIAL,ION_CSV> {SQUARE_OPN}{FIRST_HEADER_CHARACTER}{HEADER_CHARACTER}*{SQUARE_CLS}     { return IonTypes.HEADER; }
 <YYINITIAL,ION_CSV> {SQUARE_OPN}                                                            { return IonTypes.SQUARE_OPN; }
 <YYINITIAL,ION_CSV> {SQUARE_CLS}                                                            { return IonTypes.SQUARE_CLS; }
 <YYINITIAL,ION_CSV> {ASSIGN}                                                                { return IonTypes.ASSIGN; }
 <YYINITIAL,ION_CSV> {CSV_SEP}$                                                              { yybegin(YYINITIAL); return IonTypes.CSV_SEP; }
-<YYINITIAL,ION_CSV> {CSV_SEP}                                                               { yybegin(ION_CSV); return IonTypes.CSV_SEP; }
 <YYINITIAL,ION_CSV> {COLLECTION_SEP}                                                        { return IonTypes.COLLECTION_SEP; }
 <YYINITIAL,ION_CSV> {CURLY_OPN}                                                             { return IonTypes.CURLY_OPN; }
 <YYINITIAL,ION_CSV> {CURLY_CLS}                                                             { return IonTypes.CURLY_CLS; }
@@ -76,7 +69,6 @@ CSV_SEP=\|
 <YYINITIAL,ION_CSV> {PERCENT}{NEG}{INTEGER_CHARACTER}*{FLOAT_DELIMITER}{INTEGER_CHARACTER}+ { return IonTypes.REAL; }
 <YYINITIAL,ION_CSV> {PERCENT}{NEG}{INTEGER_CHARACTER}+                                      { return IonTypes.INTEGER; }
 <YYINITIAL,ION_CSV> {STRING_DELIMITER}{STRING_CHARACTER}*{STRING_DELIMITER}                 { return IonTypes.STRING; }
-<CSV_VAL> {STRING_DELIMITER}{STRING_CHARACTER}*{STRING_DELIMITER}                           { yybegin(ION_CSV); return IonTypes.STRING; }
 <ION_CSV> [^ \n\|]+                                                                         { return IonTypes.CSV_OTHER; }
 
 \n                      { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
